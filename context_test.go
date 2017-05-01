@@ -127,6 +127,7 @@ func TestContext_Args(t *testing.T) {
 	c := NewContext(nil, set, nil)
 	set.Parse([]string{"--myflag", "bat", "baz"})
 	expect(t, c.Args().Len(), 2)
+	expect(t, c.Args().Tail(), []string{"baz"})
 	expect(t, c.Bool("myflag"), true)
 }
 
